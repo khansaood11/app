@@ -2,12 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Wedding Invitation - Khan Family</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: 'Georgia', serif;
@@ -99,40 +102,38 @@
     .button-fixed:hover {
       background: #a87400;
     }
+
+    #confetti {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 999;
+    }
   </style>
 </head>
 <body>
 
-  <!-- Slide 0: Cover with Guest Name -->
-  <div class="slide active" id="slide0">
-    <div class="container">
-      <p style="font-size: 22px;" id="guestNameLine">Dear Guest,</p>
-      <h2 style="font-family: 'Great Vibes', cursive; font-size: 38px;">You Are Cordially Invited</h2>
-      <h1 style="font-size: 42px; color: #a0522d; margin-top: 20px;">Sayema 💖 Imran</h1>
-      <h1 style="font-size: 42px; color: #a0522d;">Sayeed 💖 Momina</h1>
-      <p style="font-size: 20px; margin-top: 20px;"><strong>Wedding Celebration</strong></p>
-      <p style="font-size: 18px;">On May 9 & 10, 2025</p>
-      <div class="divider">💍✨💌✨💍</div>
-    </div>
-  </div>
+  <canvas id="confetti"></canvas>
 
-  <!-- Slide 1 -->
-  <div class="slide" id="slide1">
+  <div class="slide active" id="slide1">
     <div class="container">
       <div class="arabic">السَّلَامُ عَلَيكُم وَرَحمَةُ اللهِ وَبَرَكَاتُهُ</div>
       <h1>Wedding Invitation</h1>
+      <p id="guestName"></p>
       <p>With the blessings of Allah ﷻ</p>
       <p>The Khan Family cordially invites you to join in the joyous celebration</p>
-      <div class="divider">💫💖💫</div>
+      <div class="divider">💫 weds 💫</div>
     </div>
   </div>
 
-  <!-- Slide 2 -->
   <div class="slide" id="slide2">
     <div class="container">
       <h2>We feel immensely blessed to invite you to the weddings of</h2>
       <div class="section">
-        <h1>Sayema Khan <br /> & <br /> Mo. Imran Khan</h1>
+        <h1>Sayema weds Imran</h1>
         <h3>📅 Nikah & Walima</h3>
         <p><strong>Saturday, May 10, 2025</strong><br />7:30 PM onwards</p>
         <h3>📍 Venue</h3>
@@ -140,7 +141,7 @@
       </div>
       <div class="divider">💐💫🌹💫💐</div>
       <div class="section">
-        <h1>Er. Sayeed Khan <br /> & <br /> Momina Khan</h1>
+        <h1>Sayeed weds Momina</h1>
         <h3>📅 Nikah</h3>
         <p><strong>Friday, May 9, 2025</strong><br />After Jumma Namaz</p>
         <h3>📅 Walima</h3>
@@ -151,7 +152,6 @@
     </div>
   </div>
 
-  <!-- Slide 3 -->
   <div class="slide" id="slide3">
     <div class="container">
       <h1>Dua & Blessings</h1>
@@ -163,22 +163,27 @@
     </div>
   </div>
 
-  <!-- Slide 4 -->
   <div class="slide" id="slide4">
+    <div class="container">
+      <h1>Countdown to the Big Day!</h1>
+      <h3 id="countdown"></h3>
+    </div>
+  </div>
+
+  <div class="slide" id="slide5">
     <div class="container">
       <h1>Thank You!</h1>
       <p>We look forward to celebrating this special occasion with you.</p>
       <p>Warm Regards,</p>
-      <strong>Khan Family</strong>
+      <strong>Khan Family</strong><br><br>
+      <button onclick="window.close()" class="button-fixed">End</button>
     </div>
   </div>
 
-  <!-- Button -->
   <button class="button-fixed" id="nextButton" onclick="nextSlide()">Next</button>
 
-  <!-- Script -->
   <script>
-    let current = 0;
+    let current = 1;
     const totalSlides = 5;
 
     function nextSlide() {
@@ -187,20 +192,88 @@
       current++;
       const nextSlide = document.getElementById(`slide${current}`);
       if (nextSlide) nextSlide.classList.add("active");
-      if (current === totalSlides - 1) {
+      if (current === totalSlides) {
         document.getElementById("nextButton").style.display = "none";
+        startConfetti();
       }
     }
 
-    // Ask for guest name
-    window.onload = function () {
-      const name = prompt("Please enter your name:");
-      const guestLine = document.getElementById("guestNameLine");
-      if (name && name.trim() !== "") {
-        guestLine.textContent = `Dear ${name.trim()},`;
-      }
-    };
-  </script>
+    // Guest name from URL
+    const params = new URLSearchParams(window.location.search);
+    const guest = params.get("name");
+    if (guest) {
+      document.getElementById("guestName").textContent = `Dear ${guest}, You're Invited!`;
+    }
 
+    // Countdown Timer
+    const countdown = document.getElementById("countdown");
+    const weddingDate = new Date("May 10, 2025 19:30:00").getTime();
+
+    const updateCountdown = () => {
+      const now = new Date().getTime();
+      const distance = weddingDate - now;
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      countdown.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    setInterval(updateCountdown, 1000);
+
+    // Confetti
+    function startConfetti() {
+      const confetti = document.getElementById('confetti');
+      const ctx = confetti.getContext('2d');
+      confetti.width = window.innerWidth;
+      confetti.height = window.innerHeight;
+
+      const pieces = [];
+      for (let i = 0; i < 150; i++) {
+        pieces.push({
+          x: Math.random() * confetti.width,
+          y: Math.random() * confetti.height,
+          r: Math.random() * 6 + 4,
+          d: Math.random() * 40 + 10,
+          color: `hsl(${Math.random() * 360}, 100%, 50%)`,
+          tilt: Math.floor(Math.random() * 10) - 10,
+          tiltAngle: 0,
+          tiltAngleIncremental: Math.random() * 0.07 + 0.05
+        });
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, confetti.width, confetti.height);
+        pieces.forEach(p => {
+          ctx.beginPath();
+          ctx.fillStyle = p.color;
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fill();
+        });
+        update();
+      }
+
+      function update() {
+        pieces.forEach(p => {
+          p.y += Math.cos(p.d) + 1 + p.r / 2;
+          p.tiltAngle += p.tiltAngleIncremental;
+          p.x += Math.sin(p.tiltAngle);
+          if (p.y > confetti.height) {
+            p.y = 0;
+            p.x = Math.random() * confetti.width;
+          }
+        });
+      }
+
+      function loop() {
+        draw();
+        requestAnimationFrame(loop);
+      }
+
+      loop();
+    }
+  </script>
 </body>
 </html>
