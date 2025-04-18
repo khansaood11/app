@@ -2,15 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Wedding Invitation - Khan Family</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
 
-    * {
-      box-sizing: border-box;
-    }
-
+    * { box-sizing: border-box; }
     body {
       margin: 0;
       font-family: 'Georgia', serif;
@@ -106,10 +103,10 @@
 </head>
 <body>
 
-  <!-- 🆕 Slide 0: Cover Invitation -->
+  <!-- Slide 0: Cover with Guest Name -->
   <div class="slide active" id="slide0">
     <div class="container">
-      <p style="font-size: 22px;">Dear Guest,</p>
+      <p style="font-size: 22px;" id="guestNameLine">Dear Guest,</p>
       <h2 style="font-family: 'Great Vibes', cursive; font-size: 38px;">You Are Cordially Invited</h2>
       <h1 style="font-size: 42px; color: #a0522d; margin-top: 20px;">Sayema 💖 Imran</h1>
       <h1 style="font-size: 42px; color: #a0522d;">Sayeed 💖 Momina</h1>
@@ -179,10 +176,11 @@
   <!-- Button -->
   <button class="button-fixed" id="nextButton" onclick="nextSlide()">Next</button>
 
-  <!-- JavaScript -->
+  <!-- Script -->
   <script>
     let current = 0;
     const totalSlides = 5;
+
     function nextSlide() {
       const currentSlide = document.getElementById(`slide${current}`);
       if (currentSlide) currentSlide.classList.remove("active");
@@ -193,6 +191,15 @@
         document.getElementById("nextButton").style.display = "none";
       }
     }
+
+    // Ask for guest name
+    window.onload = function () {
+      const name = prompt("Please enter your name:");
+      const guestLine = document.getElementById("guestNameLine");
+      if (name && name.trim() !== "") {
+        guestLine.textContent = `Dear ${name.trim()},`;
+      }
+    };
   </script>
 
 </body>
