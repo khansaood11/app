@@ -2,15 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Wedding Invitation - Khan Family</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
 
-    * {
-      box-sizing: border-box;
-    }
-
+    * { box-sizing: border-box; }
     body {
       margin: 0;
       font-family: 'Georgia', serif;
@@ -102,33 +99,40 @@
     .button-fixed:hover {
       background: #a87400;
     }
-
-    #countdown {
-      font-size: 40px;
-      color: #b8860b;
-      font-weight: bold;
-    }
   </style>
 </head>
 <body>
-  <!-- Slide 0 - Welcome & Guest Name -->
+
+  <!-- Slide 0: Cover with Guest Name -->
   <div class="slide active" id="slide0">
+    <div class="container">
+      <p style="font-size: 22px;" id="guestNameLine">Dear Guest,</p>
+      <h2 style="font-family: 'Great Vibes', cursive; font-size: 38px;">You Are Cordially Invited</h2>
+      <h1 style="font-size: 42px; color: #a0522d; margin-top: 20px;">Sayema 💖 Imran</h1>
+      <h1 style="font-size: 42px; color: #a0522d;">Sayeed 💖 Momina</h1>
+      <p style="font-size: 20px; margin-top: 20px;"><strong>Wedding Celebration</strong></p>
+      <p style="font-size: 18px;">On May 9 & 10, 2025</p>
+      <div class="divider">💍✨💌✨💍</div>
+    </div>
+  </div>
+
+  <!-- Slide 1 -->
+  <div class="slide" id="slide1">
     <div class="container">
       <div class="arabic">السَّلَامُ عَلَيكُم وَرَحمَةُ اللهِ وَبَرَكَاتُهُ</div>
       <h1>Wedding Invitation</h1>
       <p>With the blessings of Allah ﷻ</p>
-      <p id="guest-name">Dear <span id="guest-name-span">Guest</span>,</p>
       <p>The Khan Family cordially invites you to join in the joyous celebration</p>
       <div class="divider">💫💖💫</div>
     </div>
   </div>
 
-  <!-- Slide 1 - Wedding Details -->
-  <div class="slide" id="slide1">
+  <!-- Slide 2 -->
+  <div class="slide" id="slide2">
     <div class="container">
       <h2>We feel immensely blessed to invite you to the weddings of</h2>
       <div class="section">
-        <h1>Sayema weds Imran</h1>
+        <h1>Sayema Khan <br /> & <br /> Mo. Imran Khan</h1>
         <h3>📅 Nikah & Walima</h3>
         <p><strong>Saturday, May 10, 2025</strong><br />7:30 PM onwards</p>
         <h3>📍 Venue</h3>
@@ -136,7 +140,7 @@
       </div>
       <div class="divider">💐💫🌹💫💐</div>
       <div class="section">
-        <h1>Sayeed weds Momina</h1>
+        <h1>Er. Sayeed Khan <br /> & <br /> Momina Khan</h1>
         <h3>📅 Nikah</h3>
         <p><strong>Friday, May 9, 2025</strong><br />After Jumma Namaz</p>
         <h3>📅 Walima</h3>
@@ -147,8 +151,8 @@
     </div>
   </div>
 
-  <!-- Slide 2 - Blessings & Dua -->
-  <div class="slide" id="slide2">
+  <!-- Slide 3 -->
+  <div class="slide" id="slide3">
     <div class="container">
       <h1>Dua & Blessings</h1>
       <p>May Allah ﷻ bless the couple with endless love, joy, and harmony in their new journey together.</p>
@@ -159,8 +163,8 @@
     </div>
   </div>
 
-  <!-- Slide 3 - Thank You -->
-  <div class="slide" id="slide3">
+  <!-- Slide 4 -->
+  <div class="slide" id="slide4">
     <div class="container">
       <h1>Thank You!</h1>
       <p>We look forward to celebrating this special occasion with you.</p>
@@ -169,50 +173,34 @@
     </div>
   </div>
 
-  <!-- Slide 4 - Countdown Timer & Exit Button -->
-  <div class="slide" id="slide4">
-    <div class="container">
-      <h1>Countdown to the Big Day</h1>
-      <p>We are excited to celebrate with you!</p>
-      <div id="countdown"></div>
-      <button class="button-fixed" onclick="window.close()">Exit</button>
-    </div>
-  </div>
-
+  <!-- Button -->
   <button class="button-fixed" id="nextButton" onclick="nextSlide()">Next</button>
 
+  <!-- Script -->
   <script>
     let current = 0;
     const totalSlides = 5;
 
-    // Function to update guest name from the URL
-    function getGuestName() {
-      const urlParams = new URLSearchParams(window.location.search);
-      const name = urlParams.get('name') || 'Guest';
-      document.getElementById('guest-name-span').innerText = name;
+    function nextSlide() {
+      const currentSlide = document.getElementById(`slide${current}`);
+      if (currentSlide) currentSlide.classList.remove("active");
+      current++;
+      const nextSlide = document.getElementById(`slide${current}`);
+      if (nextSlide) nextSlide.classList.add("active");
+      if (current === totalSlides - 1) {
+        document.getElementById("nextButton").style.display = "none";
+      }
     }
 
-    // Countdown Timer
-    function startCountdown() {
-      const weddingDate = new Date("May 10, 2025 19:30:00").getTime();
-      const countdownElement = document.getElementById('countdown');
-      setInterval(function() {
-        const now = new Date().getTime();
-        const timeRemaining = weddingDate - now;
+    // Ask for guest name
+    window.onload = function () {
+      const name = prompt("Please enter your name:");
+      const guestLine = document.getElementById("guestNameLine");
+      if (name && name.trim() !== "") {
+        guestLine.textContent = `Dear ${name.trim()},`;
+      }
+    };
+  </script>
 
-        const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
-
-        countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-
-        if (timeRemaining < 0) {
-          clearInterval(x);
-          countdownElement.innerHTML = "The wedding day is here!";
-        }
-      }, 1000);
-    }
-
-    // Move to the next slide
-   
+</body>
+</html>
