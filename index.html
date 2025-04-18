@@ -6,7 +6,11 @@
   <title>Wedding Invitation - Khan Family</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
-    * { box-sizing: border-box; }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: 'Georgia', serif;
@@ -15,6 +19,7 @@
       text-align: center;
       overflow-x: hidden;
     }
+
     .slide {
       display: none;
       padding: 30px 20px 80px;
@@ -24,7 +29,11 @@
       flex-direction: column;
       transition: all 0.8s ease-in-out;
     }
-    .active { display: flex; }
+
+    .active {
+      display: flex;
+    }
+
     .container {
       max-width: 650px;
       margin: auto;
@@ -32,143 +41,157 @@
       border-radius: 30px;
       padding: 40px 30px;
       background: #fff8fc;
-      box-shadow: 0 0 10px #ffd700, 0 0 30px #ffd700, inset 0 0 10px #ffd700;
+      box-shadow:
+        0 0 10px #ffd700,
+        0 0 30px #ffd700,
+        inset 0 0 10px #ffd700;
       background-clip: padding-box;
     }
-    h1 { font-family: 'Great Vibes', cursive; font-size: 45px; color: #b8860b; margin-bottom: 20px; }
-    h2, h3, p { margin: 10px 0; }
-    .arabic { font-size: 24px; font-weight: bold; margin-bottom: 15px; }
-    .divider { font-size: 28px; margin: 20px 0; animation: float 4s ease-in-out infinite; }
-    @keyframes float { 0% { transform: translateY(0);} 50% { transform: translateY(-8px);} 100% { transform: translateY(0);} }
-    .button-fixed {
-      position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
-      background: #b8860b; color: white; padding: 12px 24px; border: none; border-radius: 12px;
-      font-size: 18px; cursor: pointer; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 45px;
+      color: #b8860b;
+      margin-bottom: 20px;
     }
-    .button-fixed:hover { background: #a87400; }
-    #countdown { font-size: 20px; margin-top: 20px; color: #8b0000; }
-    #confetti { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 999; }
+
+    h2, h3, p {
+      margin: 10px 0;
+    }
+
+    .arabic {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .divider {
+      font-size: 28px;
+      margin: 20px 0;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .footer {
+      margin-top: 30px;
+      font-style: italic;
+      font-size: 18px;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+      100% { transform: translateY(0); }
+    }
+
+    .button-fixed {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #b8860b;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 12px;
+      font-size: 18px;
+      cursor: pointer;
+      z-index: 1000;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .button-fixed:hover {
+      background: #a87400;
+    }
   </style>
 </head>
 <body>
-  <canvas id="confetti"></canvas>
-  <!-- Slide 0: Cover -->
+  <!-- Slide 0 - Welcome & Guest Name -->
   <div class="slide active" id="slide0">
-    <div class="container">
-      <p id="guestNameLine" style="font-size:22px;">Dear Guest,</p>
-      <h2 style="font-family:'Great Vibes',cursive;font-size:38px;">You Are Cordially Invited</h2>
-      <p><strong>Sayema weds Imran & Sayeed weds Momina</strong></p>
-      <p style="font-size:20px; margin-top:20px;"><strong>Wedding Celebration</strong></p>
-      <p style="font-size:18px;">On May 9 & 10, 2025</p>
-      <div class="divider">💍✨💌✨💍</div>
-    </div>
-  </div>
-
-  <!-- Slide 1 -->
-  <div class="slide" id="slide1">
     <div class="container">
       <div class="arabic">السَّلَامُ عَلَيكُم وَرَحمَةُ اللهِ وَبَرَكَاتُهُ</div>
       <h1>Wedding Invitation</h1>
-      <p id="guestName"></p>
       <p>With the blessings of Allah ﷻ</p>
+      <p id="guest-name">Dear <span id="guest-name-span">Guest</span>,</p>
       <p>The Khan Family cordially invites you to join in the joyous celebration</p>
       <div class="divider">💫💖💫</div>
     </div>
   </div>
 
-  <!-- Slide 2 -->
-  <div class="slide" id="slide2">
+  <!-- Slide 1 - Details of the Weddings -->
+  <div class="slide" id="slide1">
     <div class="container">
       <h2>We feel immensely blessed to invite you to the weddings of</h2>
       <div class="section">
-        <h1>Sayema Khan <br>&<br> Mo. Imran Khan</h1>
+        <h1>Sayema weds Imran</h1>
         <h3>📅 Nikah & Walima</h3>
-        <p><strong>Saturday, May 10, 2025</strong><br>7:30 PM onwards</p>
+        <p><strong>Saturday, May 10, 2025</strong><br />7:30 PM onwards</p>
         <h3>📍 Venue</h3>
-        <p><strong>Sethna Banquet Hall</strong><br>Near GEB Office, Ankleshwar</p>
+        <p><strong>Sethna Banquet Hall</strong><br />Near GEB Office, Ankleshwar</p>
       </div>
       <div class="divider">💐💫🌹💫💐</div>
       <div class="section">
-        <h1>Er. Sayeed Khan <br>&<br> Momina Khan</h1>
+        <h1>Sayeed weds Momina</h1>
         <h3>📅 Nikah</h3>
-        <p><strong>Friday, May 9, 2025</strong><br>After Jumma Namaz</p>
+        <p><strong>Friday, May 9, 2025</strong><br />After Jumma Namaz</p>
         <h3>📅 Walima</h3>
-        <p><strong>Saturday, May 10, 2025</strong><br>7:30 PM onwards</p>
+        <p><strong>Saturday, May 10, 2025</strong><br />7:30 PM onwards</p>
         <h3>📍 Venue</h3>
-        <p><strong>Sethna Banquet Hall</strong><br>Near GEB Office, Ankleshwar</p>
+        <p><strong>Sethna Banquet Hall</strong><br />Near GEB Office, Ankleshwar</p>
       </div>
     </div>
   </div>
 
-  <!-- Slide 3 -->
-  <div class="slide" id="slide3">
+  <!-- Slide 2 - Blessings & Dua -->
+  <div class="slide" id="slide2">
     <div class="container">
       <h1>Dua & Blessings</h1>
-      <p>May Allah ﷻ bless the couple with endless love, joy, and harmony.</p>
+      <p>May Allah ﷻ bless the couple with endless love, joy, and harmony in their new journey together.</p>
       <p>May their home be filled with Barakah, peace, and understanding.</p>
       <div class="divider">🌸🤍🌸</div>
+      <p><em>"Naye safar ke har mod par khushi mile, dua hai humari har dua qubool ho."</em></p>
+      <p><em>"Rab kare zindagi ki har subah pyaari ho, har shaam roshan ho, aur har pal khushgawar ho."</em></p>
     </div>
   </div>
 
-  <!-- Slide 4: Countdown -->
-  <div class="slide" id="slide4">
-    <div class="container">
-      <h1>Countdown to the Big Day!</h1>
-      <h3 id="countdown"></h3>
-    </div>
-  </div>
-
-  <!-- Slide 5: Thank You + End -->
-  <div class="slide" id="slide5">
+  <!-- Slide 3 - Thank You & Exit Button -->
+  <div class="slide" id="slide3">
     <div class="container">
       <h1>Thank You!</h1>
-      <p>We look forward to celebrating with you.</p>
-      <strong>Khan Family</strong><br><br>
-      <button onclick="window.close()" class="button-fixed">End</button>
+      <p>We look forward to celebrating this special occasion with you.</p>
+      <p>Warm Regards,</p>
+      <strong>Khan Family</strong>
+      <br />
+      <button class="button-fixed" onclick="window.close()">Exit</button>
     </div>
   </div>
 
-  <!-- Next Button -->
   <button class="button-fixed" id="nextButton" onclick="nextSlide()">Next</button>
 
   <script>
     let current = 0;
-    const totalSlides = 5;
+    const totalSlides = 4;
+
+    // Function to update guest name from the URL
+    function getGuestName() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const name = urlParams.get('name') || 'Guest';
+      document.getElementById('guest-name-span').innerText = name;
+    }
+
+    // Move to the next slide
     function nextSlide() {
-      document.getElementById(`slide${current}`).classList.remove('active');
+      const currentSlide = document.getElementById(`slide${current}`);
+      if (currentSlide) currentSlide.classList.remove("active");
       current++;
-      document.getElementById(`slide${current}`).classList.add('active');
-      if (current === totalSlides) document.getElementById('nextButton').style.display = 'none';
-      if (current === totalSlides) startConfetti();
+      const nextSlide = document.getElementById(`slide${current}`);
+      if (nextSlide) nextSlide.classList.add("active");
+      if (current === totalSlides) {
+        document.getElementById("nextButton").style.display = "none";
+      }
     }
-    // Guest name from URL
-    const params = new URLSearchParams(window.location.search);
-    const guest = params.get('name');
-    if (guest) document.getElementById('guestNameLine').textContent = `Dear ${guest},`;
-    if (guest) document.getElementById('guestName').textContent = `You're Invited, ${guest}!`;
-    // Countdown
-    const cdElem = document.getElementById('countdown');
-    const weddingDate = new Date('May 10, 2025 19:30:00').getTime();
-    setInterval(() => {
-      const now = Date.now();
-      const diff = weddingDate - now;
-      const d = Math.floor(diff / (1000*60*60*24));
-      const h = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
-      const m = Math.floor((diff % (1000*60*60)) / (1000*60));
-      const s = Math.floor((diff % (1000*60)) / 1000);
-      cdElem.textContent = `${d}d ${h}h ${m}m ${s}s`;
-    }, 1000);
-    // Confetti animation
-    function startConfetti() {
-      const c = document.getElementById('confetti'), ctx = c.getContext('2d');
-      c.width = innerWidth; c.height = innerHeight;
-      const pieces = [];
-      for (let i=0; i<150; i++) pieces.push({ x: Math.random()*c.width, y: Math.random()*c.height, r: Math.random()*6+4, d: Math.random()*40+10, color: `hsl(${Math.random()*360},100%,50%)`, tilt: Math.floor(Math.random()*10)-10, tiltAngle:0, tiltInc:Math.random()*0.07+0.05 });
-      function draw() { ctx.clearRect(0,0,c.width,c.height); pieces.forEach(p=>{ ctx.beginPath(); ctx.fillStyle=p.color; ctx.arc(p.x,p.y,p.r,0,2*Math.PI); ctx.fill(); }); update(); }
-      function update() { pieces.forEach(p=>{ p.y += Math.cos(p.d)+1+p.r/2; p.tiltAngle += p.tiltInc; p.x += Math.sin(p.tiltAngle); if (p.y>c.height) { p.y=0; p.x=Math.random()*c.width; } }); }
-      function loop() { draw(); requestAnimationFrame(loop); }
-      loop();
-    }
+
+    // Load the guest name when the page loads
+    window.onload = getGuestName;
   </script>
 </body>
 </html>
