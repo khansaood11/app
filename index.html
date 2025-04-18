@@ -1,4 +1,4 @@
- sli<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -102,6 +102,12 @@
     .button-fixed:hover {
       background: #a87400;
     }
+
+    #countdown {
+      font-size: 40px;
+      color: #b8860b;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
@@ -153,14 +159,22 @@
     </div>
   </div>
 
-  <!-- Slide 3 - Thank You & Exit Button -->
+  <!-- Slide 3 - Thank You -->
   <div class="slide" id="slide3">
     <div class="container">
       <h1>Thank You!</h1>
       <p>We look forward to celebrating this special occasion with you.</p>
       <p>Warm Regards,</p>
       <strong>Khan Family</strong>
-      <br />
+    </div>
+  </div>
+
+  <!-- Slide 4 - Countdown Timer & Exit Button -->
+  <div class="slide" id="slide4">
+    <div class="container">
+      <h1>Countdown to the Big Day</h1>
+      <p>We are excited to celebrate with you!</p>
+      <div id="countdown"></div>
       <button class="button-fixed" onclick="window.close()">Exit</button>
     </div>
   </div>
@@ -169,7 +183,7 @@
 
   <script>
     let current = 0;
-    const totalSlides = 4;
+    const totalSlides = 5;
 
     // Function to update guest name from the URL
     function getGuestName() {
@@ -178,20 +192,27 @@
       document.getElementById('guest-name-span').innerText = name;
     }
 
-    // Move to the next slide
-    function nextSlide() {
-      const currentSlide = document.getElementById(`slide${current}`);
-      if (currentSlide) currentSlide.classList.remove("active");
-      current++;
-      const nextSlide = document.getElementById(`slide${current}`);
-      if (nextSlide) nextSlide.classList.add("active");
-      if (current === totalSlides) {
-        document.getElementById("nextButton").style.display = "none";
-      }
+    // Countdown Timer
+    function startCountdown() {
+      const weddingDate = new Date("May 10, 2025 19:30:00").getTime();
+      const countdownElement = document.getElementById('countdown');
+      setInterval(function() {
+        const now = new Date().getTime();
+        const timeRemaining = weddingDate - now;
+
+        const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+        countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+        if (timeRemaining < 0) {
+          clearInterval(x);
+          countdownElement.innerHTML = "The wedding day is here!";
+        }
+      }, 1000);
     }
 
-    // Load the guest name when the page loads
-    window.onload = getGuestName;
-  </script>
-</body>
-</html>
+    // Move to the next slide
+   
