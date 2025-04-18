@@ -99,24 +99,30 @@
     .button-fixed:hover {
       background: #a87400;
     }
+
+    #countdown {
+      font-size: 24px;
+      margin-top: 20px;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
 
-  <!-- Slide 0: Cover with Guest Name -->
+  <!-- Slide 0: Guest Name + Cover -->
   <div class="slide active" id="slide0">
     <div class="container">
       <p style="font-size: 22px;" id="guestNameLine">Dear Guest,</p>
       <h2 style="font-family: 'Great Vibes', cursive; font-size: 38px;">You Are Cordially Invited</h2>
-      <h1 style="font-size: 42px; color: #a0522d; margin-top: 20px;">Sayema 💖 Imran</h1>
-      <h1 style="font-size: 42px; color: #a0522d;">Sayeed 💖 Momina</h1>
+      <h1 style="font-size: 42px; color: #a0522d; margin-top: 20px;">Sayema weds Imran</h1>
+      <h1 style="font-size: 42px; color: #a0522d;">Sayeed weds Momina</h1>
       <p style="font-size: 20px; margin-top: 20px;"><strong>Wedding Celebration</strong></p>
       <p style="font-size: 18px;">On May 9 & 10, 2025</p>
       <div class="divider">💍✨💌✨💍</div>
     </div>
   </div>
 
-  <!-- Slide 1 -->
+  <!-- Slide 1: Welcome -->
   <div class="slide" id="slide1">
     <div class="container">
       <div class="arabic">السَّلَامُ عَلَيكُم وَرَحمَةُ اللهِ وَبَرَكَاتُهُ</div>
@@ -127,7 +133,7 @@
     </div>
   </div>
 
-  <!-- Slide 2 -->
+  <!-- Slide 2: Details -->
   <div class="slide" id="slide2">
     <div class="container">
       <h2>We feel immensely blessed to invite you to the weddings of</h2>
@@ -151,32 +157,32 @@
     </div>
   </div>
 
-  <!-- Slide 3 -->
+  <!-- Slide 3: Countdown -->
   <div class="slide" id="slide3">
     <div class="container">
-      <h1>Dua & Blessings</h1>
-      <p>May Allah ﷻ bless the couple with endless love, joy, and harmony in their new journey together.</p>
-      <p>May their home be filled with Barakah, peace, and understanding.</p>
-      <div class="divider">🌸🤍🌸</div>
-      <p><em>"Naye safar ke har mod par khushi mile, dua hai humari har dua qubool ho."</em></p>
-      <p><em>"Rab kare zindagi ki har subah pyaari ho, har shaam roshan ho, aur har pal khushgawar ho."</em></p>
+      <h1>Countdown to Celebration 🎉</h1>
+      <p>Get ready for the big day!</p>
+      <div id="countdown"></div>
     </div>
   </div>
 
-  <!-- Slide 4 -->
+  <!-- Slide 4: Thank You + Confetti -->
   <div class="slide" id="slide4">
     <div class="container">
       <h1>Thank You!</h1>
       <p>We look forward to celebrating this special occasion with you.</p>
       <p>Warm Regards,</p>
       <strong>Khan Family</strong>
+      <br/><br/>
+      <button onclick="exitPage()" style="margin-top: 20px; background: crimson; color: white; padding: 10px 20px; border: none; border-radius: 8px; font-size: 16px; cursor: pointer;">End</button>
     </div>
   </div>
 
-  <!-- Button -->
+  <!-- Next Button -->
   <button class="button-fixed" id="nextButton" onclick="nextSlide()">Next</button>
 
-  <!-- Script -->
+  <!-- JS Script -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
   <script>
     let current = 0;
     const totalSlides = 5;
@@ -189,18 +195,59 @@
       if (nextSlide) nextSlide.classList.add("active");
       if (current === totalSlides - 1) {
         document.getElementById("nextButton").style.display = "none";
+        triggerConfetti();
       }
     }
 
-    // Ask for guest name
+    function exitPage() {
+      alert("Thank you for visiting! Hope to see you at the wedding! 🎊");
+      window.close(); // Some browsers might block this
+    }
+
+    // Guest name prompt
     window.onload = function () {
       const name = prompt("Please enter your name:");
       const guestLine = document.getElementById("guestNameLine");
       if (name && name.trim() !== "") {
         guestLine.textContent = `Dear ${name.trim()},`;
       }
-    };
-  </script>
 
+      // Countdown setup
+      const countDownDate = new Date("May 10, 2025 19:30:00").getTime();
+      const countdownElement = document.getElementById("countdown");
+      const interval = setInterval(function () {
+        const now = new Date().getTime();
+        const distance = countDownDate - now;
+        if (distance < 0) {
+          clearInterval(interval);
+          countdownElement.innerHTML = "🎊 It's time to celebrate!";
+          return;
+        }
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s remaining`;
+      }, 1000);
+    };
+
+    // Confetti animation
+    function triggerConfetti() {
+      const duration = 5 * 1000;
+      const animationEnd = Date.now() + duration;
+      const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 1000 };
+
+      const interval = setInterval(function () {
+        const timeLeft = animationEnd - Date.now();
+        if (timeLeft <= 0) return clearInterval(interval);
+
+        const particleCount = 50 * (timeLeft / duration);
+        confetti(Object.assign({}, defaults, {
+          particleCount,
+          origin: { x: Math.random(), y: Math.random() - 0.2 }
+        }));
+      }, 250);
+    }
+  </script>
 </body>
 </html>
