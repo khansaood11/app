@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Farhan Printing Press</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     * {
       margin: 0;
@@ -23,17 +23,16 @@
     header {
       background: #0d1b2a;
       color: white;
-      padding: 20px 10px;
+      padding: 20px 0;
       text-align: center;
     }
 
     header h1 {
-      font-size: 2rem;
+      font-size: 2.5rem;
     }
 
     nav {
       display: flex;
-      flex-wrap: wrap;
       justify-content: center;
       background: #1b263b;
       padding: 10px 0;
@@ -41,7 +40,7 @@
 
     nav a {
       color: white;
-      margin: 10px 15px;
+      margin: 0 15px;
       text-decoration: none;
       font-weight: 500;
     }
@@ -52,18 +51,16 @@
 
     .hero {
       background: url('https://images.unsplash.com/photo-1581090700227-1e8b94a62b9c') no-repeat center center/cover;
-      height: 300px;
+      height: 350px;
       display: flex;
       align-items: center;
       justify-content: center;
       color: white;
-      text-align: center;
-      padding: 0 15px;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
     }
 
     .hero h2 {
-      font-size: 2rem;
-      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+      font-size: 3rem;
     }
 
     .services {
@@ -76,7 +73,7 @@
       text-align: center;
       color: #0d1b2a;
       margin-bottom: 30px;
-      font-size: 1.8rem;
+      font-size: 2rem;
     }
 
     .card-container {
@@ -89,27 +86,22 @@
     .card {
       background: white;
       border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      padding: 25px 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 30px 20px;
       text-align: center;
-      width: 90%;
-      max-width: 250px;
+      width: 250px;
       transition: transform 0.3s ease;
+      cursor: pointer;
     }
 
     .card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-10px);
     }
 
     .card i {
       font-size: 2rem;
       color: #1b263b;
       margin-bottom: 10px;
-    }
-
-    .services p {
-      text-align: center;
-      margin: 8px 0;
     }
 
     footer {
@@ -120,12 +112,44 @@
       margin-top: 40px;
     }
 
-    @media (min-width: 600px) {
-      .hero h2 {
-        font-size: 2.8rem;
-      }
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      padding-top: 100px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.7);
     }
 
+    .modal-content {
+      background-color: #fff;
+      margin: auto;
+      padding: 30px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 500px;
+      position: relative;
+      text-align: center;
+    }
+
+    .close {
+      color: #aaa;
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close:hover {
+      color: red;
+    }
   </style>
 </head>
 <body>
@@ -147,7 +171,7 @@
   <section class="services" id="services">
     <h2>Our Services</h2>
     <div class="card-container">
-      <div class="card"><i class="fas fa-scroll"></i><p>Wedding Card Printing</p></div>
+      <div class="card" onclick="openModal()"><i class="fas fa-scroll"></i><p>Wedding Card Printing</p></div>
       <div class="card"><i class="fas fa-id-card"></i><p>Visiting Card</p></div>
       <div class="card"><i class="fas fa-image"></i><p>Flex Printing</p></div>
       <div class="card"><i class="fas fa-print"></i><p>Digital Printing</p></div>
@@ -158,14 +182,42 @@
 
   <section class="services" id="contact">
     <h2>Contact Us</h2>
-    <p>📍 Near SBI Bank, Belauha Bazar, Siddharth Nagar</p>
-    <p>📞 <a href="tel:+05545297255">05545297255</a></p>
-    <p>📱 <a href="https://wa.me/9838644687">9838644687</a> | <a href="https://wa.me/9935644687">9935644687</a></p>
-    <p>📌 <a href="https://maps.app.goo.gl/t2cUAmNtxr4mGBee8" target="_blank">View on Google Maps</a></p>
+    <p style="text-align:center;">📍 Near SBI Bank, Belauha Bazar, Siddharth Nagar</p>
+    <p style="text-align:center;">📞 <a href="tel:+05545297255">05545297255</a></p>
+    <p style="text-align:center;">📱 <a href="https://wa.me/9838644687">9838644687</a> | <a href="https://wa.me/9935644687">9935644687</a></p>
+    <p style="text-align:center;">📌 <a href="https://maps.app.goo.gl/t2cUAmNtxr4mGBee8" target="_blank">View on Google Maps</a></p>
   </section>
+
+  <!-- Modal Structure -->
+  <div id="weddingModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2>Wedding Card Printing</h2>
+      <p>We offer beautiful and customizable wedding card designs to make your special day even more memorable. Choose from a wide range of themes, sizes, and paper types.</p>
+      <p>📞 Call: <a href="tel:+05545297255">05545297255</a></p>
+      <p>📱 WhatsApp: <a href="https://wa.me/9838644687">9838644687</a></p>
+    </div>
+  </div>
 
   <footer>
     &copy; 2025 Farhan Enterprises. All rights reserved.
   </footer>
+
+  <script>
+    function openModal() {
+      document.getElementById("weddingModal").style.display = "block";
+    }
+
+    function closeModal() {
+      document.getElementById("weddingModal").style.display = "none";
+    }
+
+    window.onclick = function(event) {
+      const modal = document.getElementById("weddingModal");
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
 </body>
 </html>
