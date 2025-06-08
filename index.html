@@ -3,46 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Handcrafts by Mariam</title>
+    <title>Handcrafts by Mariam - Handmade Resin Art</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #fff;
+            color: #333;
         }
 
         header {
             background-color: #f8f8f8;
-            padding: 10px 20px;
+            padding: 15px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
         .logo img {
-            height: 50px;
+            height: 40px;
         }
 
         nav ul {
             list-style: none;
             display: flex;
-            gap: 20px;
+            gap: 15px;
         }
 
         nav a {
             text-decoration: none;
-            color: #333;
+            color: #555;
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ff9999;
         }
 
         .hero {
             position: relative;
             text-align: center;
-            color: white;
+            color: #fff;
+            background-color: #f0f0f0;
         }
 
         .hero img {
             width: 100%;
-            height: auto;
+            max-height: 400px;
+            object-fit: cover;
+            opacity: 0.9;
         }
 
         .hero-text {
@@ -50,69 +70,163 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-text h1 {
+            font-size: 36px;
+            font-family: 'Georgia', serif;
+            color: #fff;
+        }
+
+        .hero-text p {
+            font-size: 18px;
+            margin: 10px 0;
         }
 
         .btn {
             display: inline-block;
             padding: 10px 20px;
             background-color: #ff9999;
-            color: white;
+            color: #fff;
             text-decoration: none;
             border-radius: 5px;
+            transition: background-color 0.3s;
         }
 
-        .products {
-            padding: 20px;
+        .btn:hover {
+            background-color: #ff8080;
+        }
+
+        .section {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section h2 {
+            font-family: 'Georgia', serif;
+            color: #ff9999;
+            text-align: center;
+            margin-bottom: 20px;
         }
 
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 20px;
         }
 
         .product {
-            border: 1px solid #ddd;
-            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #e6e6fa;
+            border-radius: 10px;
+            padding: 15px;
             text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .product:hover {
+            transform: scale(1.05);
         }
 
         .product img {
             width: 100%;
-            height: auto;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
         }
 
-        .custom-orders, .about, .contact {
-            padding: 20px;
+        .product h3 {
+            font-size: 18px;
+            margin: 10px 0;
+            color: #555;
         }
 
-        form {
+        .product p {
+            font-size: 16px;
+            color: #777;
+        }
+
+        .custom-orders form {
+            max-width: 500px;
+            margin: 0 auto;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 15px;
+        }
+
+        .custom-orders input,
+        .custom-orders select,
+        .custom-orders textarea {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .custom-orders button {
+            padding: 10px;
+            background-color: #ff9999;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .custom-orders button:hover {
+            background-color: #ff8080;
+        }
+
+        .about p,
+        .contact p {
+            font-size: 16px;
+            line-height: 1.6;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .contact a {
+            color: #ff9999;
+            text-decoration: none;
+        }
+
+        .contact a:hover {
+            text-decoration: underline;
         }
 
         footer {
             background-color: #f8f8f8;
-            padding: 10px 20px;
+            padding: 20px;
             text-align: center;
+            border-top: 1px solid #ddd;
         }
 
         .social img {
-            height: 30px;
+            height: 25px;
             margin: 0 10px;
+            transition: transform 0.3s;
         }
 
-        @media (max-width: 600px) {
-            header {
-                flex-direction: column;
+        .social img:hover {
+            transform: scale(1.2);
+        }
+
+        @media (max-width: 768px) {
+            .hero-text h1 {
+                font-size: 28px;
+            }
+            .hero-text p {
+                font-size: 16px;
             }
             nav ul {
                 flex-direction: column;
                 gap: 10px;
             }
-            .product-grid {
-                grid-template-columns: 1fr;
+            header {
+                flex-direction: column;
+                gap: 10px;
             }
         }
     </style>
@@ -120,7 +234,6 @@
 <body>
     <header>
         <div class="logo">
-            <!-- Replace with your actual logo image -->
             <img src="logo.png" alt="Handcrafts by Mariam Logo">
         </div>
         <nav>
@@ -134,7 +247,6 @@
         </nav>
     </header>
     <section id="home" class="hero">
-        <!-- Replace with your actual hero image -->
         <img src="hero-image.jpg" alt="Handmade Resin Art">
         <div class="hero-text">
             <h1>Handcrafts by Mariam</h1>
@@ -142,65 +254,58 @@
             <a href="#products" class="btn">Shop Now</a>
         </div>
     </section>
-    <section id="products" class="products">
+    <section id="products" class="section">
         <h2>Our Products</h2>
         <div class="product-grid">
             <div class="product">
-                <!-- Replace with your actual product image -->
                 <img src="necklace.jpg" alt="Resin Necklace">
                 <h3>Resin Necklace</h3>
-                <p>A beautiful necklace with dark-colored resin beads, perfect for everyday wear.</p>
-                <p>Price: $25.00</p>
+                <p>$25.00</p>
             </div>
             <div class="product">
-                <!-- Replace with your actual product image -->
-                <img src="resin-hearts.jpg" alt="Resin Hearts">
+                <img src="resin-hearts.jpg" alt="Resin Heart Set">
                 <h3>Resin Heart Set</h3>
-                <p>A set of two heart-shaped red resin pieces, ideal for gifting or decorating.</p>
-                <p>Price: $15.00</p>
+                <p>$15.00</p>
             </div>
             <div class="product">
-                <!-- Replace with your actual product image -->
-                <img src="resin-flowers.jpg" alt="Resin Flowers">
+                <img src="resin-flowers.jpg" alt="Resin Flower Cluster">
                 <h3>Resin Flower Cluster</h3>
-                <p>A stunning cluster of red and white resin flowers, perfect for home decor.</p>
-                <p>Price: $30.00</p>
+                <p>$30.00</p>
             </div>
-            <!-- Add more products as needed -->
         </div>
     </section>
-    <section id="custom" class="custom-orders">
+    <section id="custom" class="section custom-orders">
         <h2>Custom Orders</h2>
-        <p>We offer custom orders for your special needs. Fill out the form below to get started.</p>
-        <!-- Note: This form is static and won't work as is. You need to set up a backend to handle form submissions, or use a service like Formspree. -->
-        <form action="#" method="post">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" required></textarea>
-            <button type="submit">Submit</button>
+        <form action="https://formspree.io/f/your-form-id" method="POST">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <select name="product-type">
+                <option value="necklace">Necklace</option>
+                <option value="earrings">Earrings</option>
+                <option value="set">Set</option>
+            </select>
+            <input type="text" name="colors" placeholder="Preferred Colors">
+            <textarea name="message" placeholder="Special Requests" rows="4"></textarea>
+            <button type="submit">Submit Order</button>
         </form>
     </section>
-    <section id="about" class="about">
+    <section id="about" class="section about">
         <h2>About Us</h2>
-        <p>Welcome to Handcrafts by Mariam, where we specialize in creating unique and glossy handmade resin art. Each piece is carefully crafted with love and attention to detail, making them perfect for gifting or adding a touch of beauty to your life. We offer a variety of products, including necklaces, earrings, and decorative items, all made from high-quality resin.</p>
-        <p>At Handcrafts by Mariam, we believe in the power of handmade creations to bring joy and meaning. Our custom order service allows you to personalize your items, ensuring that each piece is as unique as you are.</p>
-        <p>Follow us on Instagram @handcrafts_by_mariam to stay updated with our latest creations and promotions. Subscribe to our YouTube channel for behind-the-scenes looks and crafting tutorials.</p>
+        <p>Welcome to Handcrafts by Mariam, where we create unique and glossy handmade resin art with love.</p>
+        <p>Each piece is crafted to bring a little charm and a lot of meaning, perfect for gifting or cherishing yourself.</p>
     </section>
-    <section id="contact" class="contact">
+    <section id="contact" class="section contact">
         <h2>Contact Us</h2>
-        <p>Email: mariam@handcraftsbymariam.com</p>
-        <p>Instagram: <a href="[invalid url, do not cite]
-        <p>YouTube: <a href="[invalid url, do not cite] to our channel</a></p>
+        <p>Email: <a href="mailto:contact@handcraftsbymariam.com">contact@handcraftsbymariam.com</a></p>
+        <p>Instagram: <a href="https://www.instagram.com/handcrafts_by_mariam">@handcrafts_by_mariam</a></p>
+        <p>YouTube: <a href="https://youtube.com/@handcrafts_by_mariam">Watch our tutorials</a></p>
     </section>
     <footer>
         <div class="social">
-            <a href="[invalid url, do not cite] src="instagram.png" alt="Instagram"></a>
-            <a href="[invalid url, do not cite] src="youtube.png" alt="YouTube"></a>
+            <a href="https://www.instagram.com/handcrafts_by_mariam"><img src="instagram.png" alt="Instagram"></a>
+            <a href="https://youtube.com/@handcrafts_by_mariam"><img src="youtube.png" alt="YouTube"></a>
         </div>
-        <p>&copy; 2025 Handcrafts by Mariam. All rights reserved.</p>
+        <p>&copy; 2025 Handcrafts by Mariam</p>
     </footer>
 </body>
 </html>
