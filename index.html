@@ -3,562 +3,204 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Farhan Printing Press</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Handcrafts by Mariam</title>
     <style>
-        * {
+        body {
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: 'Roboto', sans-serif;
-        }
-
-        body {
-            background-color: #f4f6f8;
         }
 
         header {
-            background-color: #0d1b2a;
-            color: white;
-            text-align: center;
-            padding: 1.5rem;
+            background-color: #f8f8f8;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        header h1 {
-            font-size: 2rem;
-            font-weight: 700;
-        }
-
-        header p {
-            font-size: 1rem;
-            margin-top: 0.5rem;
-        }
-
-        nav {
-            background-color: #1b263b;
-            padding: 1rem;
+        .logo img {
+            height: 50px;
         }
 
         nav ul {
             list-style: none;
             display: flex;
-            justify-content: center;
-            gap: 2rem;
+            gap: 20px;
         }
 
         nav a {
-            color: white;
             text-decoration: none;
-            font-size: 1.1rem;
-        }
-
-        nav a:hover {
-            text-decoration: underline;
+            color: #333;
         }
 
         .hero {
-            background: url('https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
-            height: 300px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            position: relative;
             text-align: center;
             color: white;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
-        .hero h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
+        .hero img {
+            width: 100%;
+            height: auto;
         }
 
-        .services {
-            padding: 3rem 1rem;
-            max-width: 1200px;
-            margin: 0 auto;
+        .hero-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
 
-        .services h2 {
-            text-align: center;
-            margin-bottom: 2rem;
-            font-size: 2rem;
-        }
-
-        .service-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            justify-content: center;
-        }
-
-        .service-card {
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            width: 300px;
-            padding: 1.5rem;
-            text-align: center;
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .service-card i {
-            font-size: 2.5rem;
-            color: #0d1b2a;
-            margin-bottom: 1rem;
-        }
-
-        .service-card h3 {
-            font-size: 1.25rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .contact {
-            padding: 3rem 1rem;
-            background-color: #1b263b;
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ff9999;
             color: white;
-            text-align: center;
-        }
-
-        .contact h2 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .contact p {
-            margin-bottom: 0.5rem;
-        }
-
-        .contact a {
-            color: #f4f6f8;
             text-decoration: none;
+            border-radius: 5px;
         }
 
-        .contact a:hover {
-            text-decoration: underline;
+        .products {
+            padding: 20px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .product {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .product img {
+            width: 100%;
+            height: auto;
+        }
+
+        .custom-orders, .about, .contact {
+            padding: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
         }
 
         footer {
-            background-color: #0d1b2a;
-            color: white;
-            text-align: center;
-            padding: 1rem;
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-
-        .modal-content {
-            background: white;
-            padding: 2rem;
-            border-radius: 8px;
-            max-width: 500px;
-            width: 90%;
-            position: relative;
-        }
-
-        .modal-content h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .modal-content p {
-            margin-bottom: 1rem;
-        }
-
-        .modal-content ul {
-            list-style-type: disc;
-            padding-left: 20px;
-            margin-bottom: 1rem;
-        }
-
-        .modal-content ul li {
-            margin-bottom: 0.5rem;
-        }
-
-        .modal-options {
-            margin-top: 1rem;
-        }
-
-        .modal-option {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .modal-option label {
-            font-weight: bold;
-            font-size: 0.9rem;
-        }
-
-        .modal-option select {
-            padding: 0.3rem;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 0.9rem;
-            width: 60%;
-        }
-
-        .upload-section {
-            margin-top: 1rem;
-        }
-
-        .upload-section label {
-            display: block;
-            font-weight: bold;
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .upload-section input[type="file"] {
-            display: block;
-            width: 100%;
-            padding: 0.3rem;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 0.9rem;
-        }
-
-        .upload-section p {
-            font-size: 0.9rem;
-            color: #555;
-            margin-top: 0.5rem;
-        }
-
-        .submit-btn {
-            display: block;
-            margin: 1rem auto 0;
-            padding: 0.75rem 1.5rem;
-            background-color: #0d1b2a;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .submit-btn:hover {
-            background-color: #1b263b;
-        }
-
-        .confirmation-message {
-            margin-top: 1rem;
-            padding: 1rem;
-            background-color: #e6f4ea;
-            border: 1px solid #34c759;
-            border-radius: 4px;
-            font-size: 0.9rem;
-            color: #2e7d32;
+            background-color: #f8f8f8;
+            padding: 10px 20px;
             text-align: center;
         }
 
-        .modal-price {
-            margin-top: 1rem;
-            font-weight: bold;
-            color: #e67e22;
+        .social img {
+            height: 30px;
+            margin: 0 10px;
         }
 
-        .close-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        @media (max-width: 768px) {
-            .hero h2 {
-                font-size: 1.8rem;
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
             }
-
             nav ul {
                 flex-direction: column;
-                gap: 1rem;
-                text-align: center;
+                gap: 10px;
             }
-
-            .service-card {
-                width: 100%;
-                max-width: 300px;
+            .product-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Farhan Printing Press</h1>
-        <p>Printing & Stationery Services - Siddharth Nagar</p>
-    </header>
-    <nav>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-    <section id="home" class="hero">
-        <h2>Your One-Stop Print Solution</h2>
-    </section>
-    <section id="services" class="services">
-        <h2>Our Services</h2>
-        <div class="service-grid">
-            <div class="service-card" onclick="openModal('wedding')">
-                <i class="fas fa-ring"></i>
-                <h3>Wedding Card Printing</h3>
-                <p>Elegant and customizable wedding cards.</p>
-            </div>
-            <div class="service-card" onclick="openModal('visiting')">
-                <i class="fas fa-address-card"></i>
-                <h3>Visiting Card</h3>
-                <p>Professional visiting cards for lasting impressions.</p>
-            </div>
-            <div class="service-card" onclick="openModal('flex')">
-                <i class="fas fa-sign"></i>
-                <h3>Flex Printing</h3>
-                <p>Large format flex printing for banners.</p>
-            </div>
-            <div class="service-card" onclick="openModal('digital')">
-                <i class="fas fa-print"></i>
-                <h3>Digital Printing</h3>
-                <p>Fast and cost-effective digital printing.</p>
-            </div>
-            <div class="service-card" onclick="openModal('bill')">
-                <i class="fas fa-file-invoice"></i>
-                <h3>Bill Book Printing</h3>
-                <p>Customized bill books for your business.</p>
-            </div>
-            <div class="service-card" onclick="openModal('letter')">
-                <i class="fas fa-file-alt"></i>
-                <h3>Letter Pad Printing</h3>
-                <p>Personalized letter pads with your logo.</p>
-            </div>
+        <div class="logo">
+            <!-- Replace with your actual logo image -->
+            <img src="logo.png" alt="Handcrafts by Mariam Logo">
         </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#custom">Custom Orders</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section id="home" class="hero">
+        <!-- Replace with your actual hero image -->
+        <img src="hero-image.jpg" alt="Handmade Resin Art">
+        <div class="hero-text">
+            <h1>Handcrafts by Mariam</h1>
+            <p>Unique & Glossy Handmade Resin Art</p>
+            <a href="#products" class="btn">Shop Now</a>
+        </div>
+    </section>
+    <section id="products" class="products">
+        <h2>Our Products</h2>
+        <div class="product-grid">
+            <div class="product">
+                <!-- Replace with your actual product image -->
+                <img src="necklace.jpg" alt="Resin Necklace">
+                <h3>Resin Necklace</h3>
+                <p>A beautiful necklace with dark-colored resin beads, perfect for everyday wear.</p>
+                <p>Price: $25.00</p>
+            </div>
+            <div class="product">
+                <!-- Replace with your actual product image -->
+                <img src="resin-hearts.jpg" alt="Resin Hearts">
+                <h3>Resin Heart Set</h3>
+                <p>A set of two heart-shaped red resin pieces, ideal for gifting or decorating.</p>
+                <p>Price: $15.00</p>
+            </div>
+            <div class="product">
+                <!-- Replace with your actual product image -->
+                <img src="resin-flowers.jpg" alt="Resin Flowers">
+                <h3>Resin Flower Cluster</h3>
+                <p>A stunning cluster of red and white resin flowers, perfect for home decor.</p>
+                <p>Price: $30.00</p>
+            </div>
+            <!-- Add more products as needed -->
+        </div>
+    </section>
+    <section id="custom" class="custom-orders">
+        <h2>Custom Orders</h2>
+        <p>We offer custom orders for your special needs. Fill out the form below to get started.</p>
+        <!-- Note: This form is static and won't work as is. You need to set up a backend to handle form submissions, or use a service like Formspree. -->
+        <form action="#" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+    <section id="about" class="about">
+        <h2>About Us</h2>
+        <p>Welcome to Handcrafts by Mariam, where we specialize in creating unique and glossy handmade resin art. Each piece is carefully crafted with love and attention to detail, making them perfect for gifting or adding a touch of beauty to your life. We offer a variety of products, including necklaces, earrings, and decorative items, all made from high-quality resin.</p>
+        <p>At Handcrafts by Mariam, we believe in the power of handmade creations to bring joy and meaning. Our custom order service allows you to personalize your items, ensuring that each piece is as unique as you are.</p>
+        <p>Follow us on Instagram @handcrafts_by_mariam to stay updated with our latest creations and promotions. Subscribe to our YouTube channel for behind-the-scenes looks and crafting tutorials.</p>
     </section>
     <section id="contact" class="contact">
         <h2>Contact Us</h2>
-        <p><a href="https://maps.google.com" target="_blank">📍 Near SBI Bank, Belauha Bazar, Siddharth Nagar</a></p>
-        <p><a href="tel:+919876543210">+91 98765 43210</a></p>
-        <p><a href="https://wa.me/919876543210">WhatsApp Us</a></p>
+        <p>Email: mariam@handcraftsbymariam.com</p>
+        <p>Instagram: <a href="[invalid url, do not cite]
+        <p>YouTube: <a href="[invalid url, do not cite] to our channel</a></p>
     </section>
     <footer>
-        <p>© 2025 Farhan Printing Press. All rights reserved.</p>
-    </footer>
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal()">×</span>
-            <h3 id="modal-title"></h3>
-            <div id="modal-description"></div>
+        <div class="social">
+            <a href="[invalid url, do not cite] src="instagram.png" alt="Instagram"></a>
+            <a href="[invalid url, do not cite] src="youtube.png" alt="YouTube"></a>
         </div>
-    </div>
-    <script>
-        const modal = document.getElementById('modal');
-        const modalTitle = document.getElementById('modal-title');
-        const modalDescription = document.getElementById('modal-description');
-
-        const services = {
-            wedding: {
-                title: 'Wedding Card Printing',
-                description: `
-                    <p>Design your perfect wedding card with Farhan Printing Press. Please provide the following details to help us create a card that matches your vision:</p>
-                    <ul>
-                        <li><strong>Size:</strong> Standard (5 x 7 inches) or custom dimensions</li>
-                        <li><strong>Minimum Order:</strong> 50 units</li>
-                    </ul>
-                    <p>Select your preferences below, and upload your design file if available. Contact us to finalize your order and get a tailored quote.</p>
-                    <div class="modal-options">
-                        <div class="modal-option">
-                            <label for="paper-quality">Paper Quality</label>
-                            <select id="paper-quality">
-                                <option value="matte">300 GSM Matte</option>
-                                <option value="glossy">300 GSM Glossy</option>
-                                <option value="textured">Premium Textured Paper</option>
-                            </select>
-                        </div>
-                        <div class="modal-option">
-                            <label for="design-style">Design Style</label>
-                            <select id="design-style">
-                                <option value="traditional">Traditional</option>
-                                <option value="modern">Modern</option>
-                                <option value="minimalist">Minimalist</option>
-                                <option value="custom">Custom Design</option>
-                            </select>
-                        </div>
-                        <div class="modal-option">
-                            <label for="finishing">Finishing</label>
-                            <select id="finishing">
-                                <option value="none">No Finish</option>
-                                <option value="embossing">Embossing</option>
-                                <option value="foil">Foil Stamping</option>
-                                <option value="uv">UV Coating</option>
-                            </select>
-                        </div>
-                        <div class="modal-option">
-                            <label for="orientation">Orientation</label>
-                            <select id="orientation">
-                                <option value="portrait">Portrait</option>
-                                <option value="landscape">Landscape</option>
-                            </select>
-                        </div>
-                        <div class="modal-option">
-                            <label for="quantity">Quantity</label>
-                            <select id="quantity">
-                                <option value="50">50</option>
-                                <option value="100">100</option>
-                                <option value="200">200</option>
-                                <option value="500">500</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="upload-section">
-                        <label for="design-upload">Upload Your Design (Optional)</label>
-                        <input type="file" id="design-upload" accept=".pdf,.jpg,.png">
-                        <p id="upload-feedback">No file selected</p>
-                    </div>
-                    <button class="submit-btn" onclick="submitWeddingCardRequest()">Submit Request</button>
-                    <div id="confirmation-message" style="display: none;"></div>
-                `
-            },
-            visiting: {
-                title: 'Visiting Card',
-                description: `
-                    <p>Make a lasting impression with our Standard Visiting Cards, designed to communicate your professional identity effectively.</p>
-                    <ul>
-                        <li><strong>Size:</strong> 3.5 x 2 inches</li>
-                        <li><strong>Materials Available:</strong> 300 GSM Matte Coated Paper and 300 GSM Glossy Paper</li>
-                        <li><strong>Lamination Options:</strong> Matte or Glossy Lamination</li>
-                        <li><strong>Order from as low as 100 units</strong></li>
-                        <li><strong>Same-day delivery</strong> for orders placed before 3 PM</li>
-                    </ul>
-                    <p>We do not accept designs that belong to or represent government or government-affiliated organizations.</p>
-                    <div class="modal-options">
-                        <div class="modal-option">
-                            <label>Materials</label>
-                            <span>300 GSM Matte Coated Paper</span>
-                        </div>
-                        <div class="modal-option">
-                            <label>Lamination</label>
-                            <span>No Finish</span>
-                        </div>
-                        <div class="modal-option">
-                            <label>Orientation</label>
-                            <span>Landscape</span>
-                        </div>
-                        <div class="modal-option">
-                            <label>Printing Location</label>
-                            <span>Front</span>
-                        </div>
-                        <div class="modal-option">
-                            <label>Quantity</label>
-                            <span>100</span>
-                        </div>
-                    </div>
-                    <div class="modal-price">₹214.76 inclusive of all taxes<br>for 100 (@ ₹2.15 / piece)</div>
-                `
-            },
-            flex: {
-                title: 'Flex Printing',
-                description: 'Large format flex printing suitable for banners and hoardings.'
-            },
-            digital: {
-                title: 'Digital Printing',
-                description: 'Fast and cost-effective digital printing services for various needs.'
-            },
-            bill: {
-                title: 'Bill Book Printing',
-                description: 'Customized bill books designed for your business.'
-            },
-            letter: {
-                title: 'Letter Pad Printing',
-                description: 'Personalized letter pads with your company logo and details.'
-            }
-        };
-
-        function openModal(service) {
-            modalTitle.textContent = services[service].title;
-            modalDescription.innerHTML = services[service].description;
-            modal.style.display = 'flex';
-
-            // Add event listener for file upload if the modal is for Wedding Card Printing
-            if (service === 'wedding') {
-                const fileInput = document.getElementById('design-upload');
-                const uploadFeedback = document.getElementById('upload-feedback');
-                fileInput.addEventListener('change', function() {
-                    if (fileInput.files.length > 0) {
-                        uploadFeedback.textContent = `Selected file: ${fileInput.files[0].name}`;
-                    } else {
-                        uploadFeedback.textContent = 'No file selected';
-                    }
-                });
-            }
-        }
-
-        function closeModal() {
-            modal.style.display = 'none';
-            // Reset file input, feedback, and confirmation message when closing the modal
-            const fileInput = document.getElementById('design-upload');
-            const uploadFeedback = document.getElementById('upload-feedback');
-            const confirmationMessage = document.getElementById('confirmation-message');
-            if (fileInput && uploadFeedback) {
-                fileInput.value = '';
-                uploadFeedback.textContent = 'No file selected';
-            }
-            if (confirmationMessage) {
-                confirmationMessage.style.display = 'none';
-                confirmationMessage.innerHTML = '';
-            }
-        }
-
-        function submitWeddingCardRequest() {
-            const paperQuality = document.getElementById('paper-quality').value;
-            const designStyle = document.getElementById('design-style').value;
-            const finishing = document.getElementById('finishing').value;
-            const orientation = document.getElementById('orientation').value;
-            const quantity = document.getElementById('quantity').value;
-            const fileInput = document.getElementById('design-upload');
-            const fileName = fileInput.files.length > 0 ? fileInput.files[0].name : 'No file uploaded';
-
-            const confirmationMessage = document.getElementById('confirmation-message');
-            confirmationMessage.innerHTML = `
-                <p>Thank you for your request!</p>
-                <p><strong>Your Selections:</strong></p>
-                <p>Paper Quality: ${paperQuality.charAt(0).toUpperCase() + paperQuality.slice(1)}</p>
-                <p>Design Style: ${designStyle.charAt(0).toUpperCase() + designStyle.slice(1)}</p>
-                <p>Finishing: ${finishing === 'none' ? 'No Finish' : finishing.charAt(0).toUpperCase() + finishing.slice(1)}</p>
-                <p>Orientation: ${orientation.charAt(0).toUpperCase() + orientation.slice(1)}</p>
-                <p>Quantity: ${quantity}</p>
-                <p>Uploaded File: ${fileName}</p>
-                <p>We will contact you shortly to confirm your order and provide a quote.</p>
-            `;
-            confirmationMessage.className = 'confirmation-message';
-            confirmationMessage.style.display = 'block';
-
-            // Scroll to the confirmation message
-            confirmationMessage.scrollIntoView({ behavior: 'smooth' });
-        }
-
-        window.onclick = function(event) {
-            if (event.target === modal) {
-                closeModal();
-            }
-        };
-    </script>
+        <p>&copy; 2025 Handcrafts by Mariam. All rights reserved.</p>
+    </footer>
 </body>
 </html>
