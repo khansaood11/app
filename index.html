@@ -3,297 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Whimsical resin art jewelry by Mariam. Shop handmade necklaces, earrings, and custom orders inspired by nature.">
+    <meta property="og:title" content="Mariam's Handcrafts - Whimsical Resin Art">
+    <meta property="og:description" content="Discover unique resin art jewelry inspired by nature. Shop now or order custom pieces!">
+    <meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=Mariam's+Handcrafts">
+    <meta property="og:url" content="https://mariamshandcrafts.com">
     <title>Mariam's Handcrafts - Whimsical Resin Art</title>
+    <link rel="icon" type="image/png" href="https://via.placeholder.com/32x32.png?text=🌿">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400&family=Satisfy&display=swap" as="style" onload="this.rel='stylesheet'">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-
-        body {
-            background-color: #fffff0;
-            color: #4a4a4a;
-        }
-
-        header {
-            background-color: #a8b5a2;
-            padding: 15px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .logo {
-            font-family: 'Georgia', serif;
-            font-size: 24px;
-            color: #f4c7c3;
-            position: relative;
-            text-align: center;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .logo::before {
-            content: "🍃";
-            font-size: 18px;
-            color: #d4af37;
-        }
-
-        .logo::after {
-            content: "✨";
-            font-size: 18px;
-            color: #d4af37;
-        }
-
-        .logo span {
-            color: #d4af37;
-            font-style: italic;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 15px;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: #f4c7c3;
-            font-size: 16px;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: #d4af37;
-        }
-
-        .hero {
-            background-color: #a8b5a2;
-            padding: 40px 20px;
-            text-align: center;
-            border-bottom: 2px solid #f4c7c3;
-        }
-
-        .hero h1 {
-            font-family: 'Georgia', serif;
-            font-size: 36px;
-            color: #f4c7c3;
-        }
-
-        .hero p {
-            font-size: 18px;
-            color: #ffff0;
-            margin: 10px 0;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #d4af37;
-            color: #fffff0;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-
-        .btn:hover {
-            background-color: #b89730;
-        }
-
-        .section {
-            padding: 40px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section h2 {
-            font-family: 'Georgia', serif;
-            color: #d4af37;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-        }
-
-        .product {
-            background-color: #fffff0;
-            border: 1px solid #a8b5a2;
-            border-radius: 10px;
-            padding: 15px;
-            text-align: center;
-            transition: transform 0.3s;
-        }
-
-        .product:hover {
-            transform: scale(1.05);
-        }
-
-        .product-placeholder {
-            background-color: #f4c7c3;
-            height: 150px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            color: #4a4a4a;
-            border-radius: 8px;
-            border: 1px dashed #a8b5a2;
-        }
-
-        .product h3 {
-            font-size: 18px;
-            margin: 10px 0;
-            color: #4a4a4a;
-        }
-
-        .product p {
-            font-size: 16px;
-            color: #666;
-        }
-
-        .custom-orders form {
-            max-width: 500px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .custom-orders input,
-        .custom-orders select,
-        .custom-orders textarea {
-            padding: 10px;
-            border: 1px solid #a8b5a2;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-
-        .custom-orders button {
-            padding: 10px;
-            background-color: #d4af37;
-            color: #fffff0;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .custom-orders button:hover {
-            background-color: #b89730;
-        }
-
-        .about p,
-        .contact p {
-            font-size: 16px;
-            line-height: 1.6;
-            text-align: center;
-            margin-bottom: 10px;
-        }
-
-        .contact a {
-            color: #d4af37;
-            text-decoration: none;
-        }
-
-        .contact a:hover {
-            text-decoration: underline;
-        }
-
-        footer {
-            background-color: #a8b5a2;
-            padding: 20px;
-            text-align: center;
-            border-top: 1px solid #f4c7c3;
-        }
-
-        .social span {
-            margin: 0 10px;
-            font-size: 20px;
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 28px;
-            }
-            .hero p {
-                font-size: 16px;
-            }
-            nav ul {
-                flex-direction: column;
-                gap: 10px;
-            }
-            header {
-                flex-direction: column;
-                gap: 10px;
-            }
-        }
+        *{margin:0;padding:0;box-sizing:border-box;font-family:'Lato',sans-serif}body{background:linear-gradient(180deg,#fffff0,#f5f5dc);color:#4a4a4a;scroll-behavior:smooth}header{background:linear-gradient(to right,#a8b5a2,#b5c2a8);padding:10px 15px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100;box-shadow:0 2px 5px rgba(0,0,0,0.1);flex-wrap:wrap;gap:20px}.header-right{display:flex;align-items:center;gap:10px}.logo{font-family:'Satisfy',cursive;font-size:24px;color:#ffb6c1;display:flex;align-items:center;gap:8px;position:relative;transition:transform 0.3s}.logo:hover{transform:scale(1.05)}.logo::before{content:"";width:20px;height:20px;background:#98c1d9;clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);position:absolute;left:-25px;animation:flower 2s infinite}@keyframes flower{0%,100%{transform:rotate(0deg)}50%{transform:rotate(15deg)}}.logo::after{content:"";width:16px;height:16px;background:#ffd700;clip-path:circle(50% at 50% 50%);position:absolute;right:-20px;animation:swirl 3s infinite linear}@keyframes swirl{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}.logo span{color:#ffd700;font-family:'Satisfy',cursive}nav ul{list-style:none;display:flex;gap:15px;align-items:center}nav a{text-decoration:none;color:#f4c7c3;font-size:14px;font-weight:500;transition:color 0.3s}nav a:hover{color:#d4af37}.cart-summary{background:#f4c7c3;padding:4px 8px;border-radius:5px;color:#4a4a4a;box-shadow:0 1px 3px rgba(0,0,0,0.1);cursor:pointer;display:flex;align-items:center;gap:4px}.cart-summary p{margin:0;font-size:12px}.cart-summary span{font-weight:bold}.hero{background:#a8b5a2;padding:40px 20px;text-align:center;border-bottom:2px solid #f4c7c3}.hero h1{font-family:'Playfair Display',serif;font-size:36px;color:#f4c7c3}.hero p{font-size:18px;color:#f5f5f5;margin:10px 0}.featured-banner{margin-top:20px;background:#f4c7c3;padding:15px;border-radius:8px;color:#4a4a4a}.featured-banner h3{font-family:'Playfair Display',serif;font-size:20px;margin-bottom:10px}.featured-banner img{width:100%;max-width:300px;height:200px;object-fit:cover;border-radius:8px;margin-bottom:10px}.featured-banner a{display:inline-block;padding:8px 16px;background:#d4af37;color:#fffff0;text-decoration:none;border-radius:5px}.featured-banner a:hover{background:#b89730}.btn{display:inline-block;padding:10px 20px;background:#d4af37;color:#fffff0;text-decoration:none;border-radius:5px;transition:background 0.3s,transform 0.3s}.btn:hover{background:#b89730;transform:scale(1.05)}.section{padding:40px 20px;max-width:1200px;margin:0 auto;box-shadow:0 4px 10px rgba(0,0,0,0.05);background:#fff;border-radius:10px;margin-bottom:20px}.section h2{font-family:'Playfair Display',serif;color:#d4af37;text-align:center;margin-bottom:20px}.product-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}.product{background:#fffff0;border:1px solid #a8b5a2;border-radius:10px;padding:15px;text-align:center;transition:transform 0.3s,box-shadow 0.3s}.product:hover{transform:scale(1.05);box-shadow:0 5px 15px rgba(0,0,0,0.1)}.product img{width:100%;height:150px;object-fit:cover;border-radius:8px;loading:lazy}.product h3{font-size:18px;margin:10px 0;color:#4a4a4a}.product p{font-size:16px;color:#666}.stock-status{font-size:14px;margin:5px 0}.in-stock{color:#98c1d9}.sold-out{color:#ff6b6b}.restock-form{display:none;margin-top:10px}.restock-form.active{display:block}.restock-form input{padding:5px;border:1px solid #a8b5a2;border-radius:5px;font-size:14px}.restock-form button{padding:5px 10px;background:#d4af37;color:#fffff0;border:none;border-radius:5px;cursor:pointer}.restock-form button:hover{background:#b89730}.product button{padding:8px 16px;background:#d4af37;color:#fffff0;border:none;border-radius:5px;cursor:pointer;transition:background 0.3s}.product button:hover{background:#b89730}.product button:disabled{background:#ccc;cursor:not-allowed}.custom-orders form{max-width:500px;margin:0 auto;display:flex;flex-direction:column;gap:15px}.custom-orders input,.custom-orders select,.custom-orders textarea{padding:10px;border:1px solid #a8b5a2;border-radius:5px;font-size:16px}.custom-orders button{padding:10px;background:#d4af37;color:#fffff0;border:none;border-radius:5px;cursor:pointer;transition:background 0.3s}.custom-orders button:hover{background:#b89730}.testimonials{padding:40px 20px;text-align:center}.testimonials h2{font-family:'Playfair Display',serif;color:#d4af37;margin-bottom:20px}.testimonial{max-width:600px;margin:0 auto 20px;padding:15px;background:#fffff0;border:1px solid #a8b5a2;border-radius:8px}.testimonial p{font-style:italic;color:#666}.testimonial cite{font-size:14px;color:#4a4a4a;display:block;margin-top:10px}.modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);justify-content:center;align-items:center}.modal-content{background:#fffff0;padding:20px;border-radius:10px;text-align:center;max-width:400px}.modal-content button{background:#d4af37;color:#fffff0;border:none;padding:10px 20px;border-radius:5px;cursor:pointer}.modal-content button:hover{background:#b89730}.modal-content a{display:inline-block;padding:10px 20px;background:#25D366;color:#fff;text-decoration:none;border-radius:5px;margin-top:10px}.modal-content a:hover{background:#1DA851}.checkout-form{display:flex;flex-direction:column;gap:10px}.checkout-form input{padding:10px;border:1px solid #a8b5a2;border-radius:5px}.about p,.contact p{font-size:16px;line-height:1.6;text-align:center;margin-bottom:10px}.contact a{color:#d4af37;text-decoration:none}.contact a:hover{text-decoration:underline}footer{background:#a8b5a2;padding:20px;text-align:center;border-top:1px solid #f4c7c3}.social span{margin:0 10px;font-size:20px}@media (max-width:768px){.header-right{gap:5px}nav ul{gap:10px}nav a{font-size:12px}.logo{font-size:20px}.logo::before{width:16px;height:16px;left:-20px}.logo::after{width:12px;height:12px;right:-15px}.cart-summary p{font-size:10px}.cart-summary{padding:3px 6px}.hero h1{font-size:28px}.hero p{font-size:16px}.section,.testimonials{padding:20px}.featured-banner img{max-width:200px;height:150px}}
     </style>
 </head>
 <body>
     <header>
-        <div class="logo">
+        <div class="logo" aria-label="Mariam's Handcrafts Logo">
             Mariam’s <span>Handcrafts</span>
         </div>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#products">Products</a></li>
-                <li><a href="#custom">Custom Orders</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
+        <div class="header-right">
+            <nav id="nav-menu">
+                <ul>
+                    <li><a href="#home" aria-label="Home Section">Home</a></li>
+                    <li><a href="#products" aria-label="Products Section">Products</a></li>
+                    <li><a href="#custom" aria-label="Custom Orders Section">Custom Orders</a></li>
+                    <li><a href="#about" aria-label="About Section">About</a></li>
+                    <li><a href="#contact" aria-label="Contact Section">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="cart-summary" id="cart-summary" onclick="showCheckoutModal()">
+                <span>🛒</span>
+                <p>Items: <span id="cart-count">0</span> | $<span id="cart-total">0.00</span></p>
+            </div>
+        </div>
     </header>
     <section id="home" class="hero">
         <h1>Mariam’s Handcrafts</h1>
         <p>Whimsical Resin Art from My Garden</p>
-        <a href="#products" class="btn">Shop Now</a>
+        <a href="#products" class="btn" aria-label="Shop Now">Shop Now</a>
+        <div class="featured-banner">
+            <h3>Featured Set: Heart Charm Collection</h3>
+            <img src="https://via.placeholder.com/300x200.png/ffb6c1/ffffff?text=Heart+Charm+Necklace+and+Earrings+Set" alt="Featured Heart Charm Collection: Necklace and earrings with heart-shaped resin pendants">
+            <p>A little charm, a lot of meaning! Perfect for gifting.</p>
+            <a href="#products" aria-label="Shop Heart Charm Collection">Shop Now</a>
+        </div>
     </section>
     <section id="products" class="section">
         <h2>Our Products</h2>
         <div class="product-grid">
             <div class="product">
-                <div class="product-placeholder">[Garden Necklace: Green resin beads with leaf charm]</div>
+                <img src="https://via.placeholder.com/150x150.png/98c1d9/ffffff?text=Green+Resin+Beads+with+Leaf+Charm" alt="Garden Necklace: Green resin beads with leaf charm on a silver chain">
                 <h3>Garden Necklace</h3>
                 <p>$25.00</p>
+                <p class="stock-status in-stock">In Stock</p>
+                <button onclick="addToCart('Garden Necklace', 25.00)" aria-label="Add Garden Necklace to Cart">Add to Cart</button>
             </div>
             <div class="product">
-                <div class="product-placeholder">[Petal Hearts: Pink resin hearts with gold flecks]</div>
+                <img src="https://via.placeholder.com/150x150.png/ffb6c1/ffffff?text=Pink+Resin+Hearts+with+Gold+Flecks" alt="Petal Hearts: Pink resin heart-shaped earrings with gold flecks">
                 <h3>Petal Hearts</h3>
                 <p>$15.00</p>
+                <p class="stock-status sold-out">Sold Out</p>
+                <button onclick="toggleRestockForm('petal-hearts')" aria-label="Notify Me When Petal Hearts is Back in Stock">Notify Me</button>
+                <div id="restock-petal-hearts" class="restock-form">
+                    <input type="email" placeholder="Your Email" aria-label="Email for Restock Notification">
+                    <button onclick="submitRestock('Petal Hearts')" aria-label="Submit Restock Notification for Petal Hearts">Submit</button>
+                </div>
             </div>
             <div class="product">
-                <div class="product-placeholder">[Floral Cluster: Ivory resin flowers with pink centers]</div>
+                <img src="https://via.placeholder.com/150x150.png/f5f5dc/ffffff?text=Ivory+Resin+Flowers+with+Pink+Centers" alt="Floral Cluster: Ivory resin flowers with pink centers on a necklace">
                 <h3>Floral Cluster</h3>
                 <p>$30.00</p>
+                <p class="stock-status in-stock">In Stock</p>
+                <button onclick="addToCart('Floral Cluster', 30.00)" aria-label="Add Floral Cluster to Cart">Add to Cart</button>
             </div>
+        </div>
+    </section>
+    <section id="testimonials" class="testimonials">
+        <h2>What Our Customers Say</h2>
+        <div class="testimonial">
+            <p>"I bought the Petal Hearts for my sister, and she absolutely loves them! So unique and beautifully made."</p>
+            <cite>- Sarah M.</cite>
+        </div>
+        <div class="testimonial">
+            <p>"Mariam's pieces are magical! The Garden Necklace is my favorite accessory now."</p>
+            <cite>- Priya K.</cite>
         </div>
     </section>
     <section id="custom" class="section custom-orders">
         <h2>Custom Orders</h2>
-        <form action="mailto:contact@mariamshandcrafts.com" method="POST" enctype="text/plain">
-            <input type="text" name="name" placeholder="Your Name" required>
-            <input type="email" name="email" placeholder="Your Email" required>
-            <select name="product-type">
+        <form id="custom-order-form" onsubmit="handleCustomOrder(event)">
+            <input type="text" id="name" placeholder="Your Name" required aria-label="Your Name">
+            <input type="email" id="email" placeholder="Your Email" required aria-label="Your Email">
+            <select id="product-type" aria-label="Select Product Type">
                 <option value="necklace">Necklace</option>
                 <option value="earrings">Earrings</option>
                 <option value="set">Set</option>
             </select>
-            <input type="text" name="colors" placeholder="Preferred Colors">
-            <textarea name="message" placeholder="Special Requests" rows="4"></textarea>
-            <button type="submit">Submit Order</button>
+            <input type="text" id="colors" placeholder="Preferred Colors" aria-label="Preferred Colors">
+            <textarea id="message" placeholder="Special Requests" rows="4" aria-label="Special Requests"></textarea>
+            <button type="submit" aria-label="Submit Custom Order">Submit Order</button>
         </form>
     </section>
     <section id="about" class="section about">
@@ -303,16 +110,135 @@
     </section>
     <section id="contact" class="section contact">
         <h2>Contact Me</h2>
-        <p>Email: <a href="mailto:contact@mariamshandcrafts.com">contact@mariamshandcrafts.com</a></p>
-        <p>Instagram: <a href="https://www.instagram.com/handcrafts_by_mariam">@handcrafts_by_mariam</a></p>
-        <p>YouTube: <a href="https://youtube.com/@handcrafts_by_mariam">Watch my tutorials</a></p>
+        <p>Email: <a href="mailto:contact@mariamshandcrafts.com" aria-label="Email Mariam">contact@mariamshandcrafts.com</a></p>
+        <p>Instagram: <a href="https://www.instagram.com/handcrafts.by.mariam" aria-label="Mariam's Instagram">@handcrafts.by.mariam</a></p>
+        <p>YouTube: <a href="https://youtube.com/@handcrafts.by.mariam" aria-label="Mariam's YouTube Channel">Watch my tutorials</a></p>
     </section>
     <footer>
         <div class="social">
-            <span>🌿</span>
-            <span>🎥</span>
+            <span aria-label="Nature Icon">🌿</span>
+            <span aria-label="Video Icon">🎥</span>
         </div>
         <p>© 2025 Mariam’s Handcrafts</p>
     </footer>
+    <div class="modal" id="confirmation-modal">
+        <div class="modal-content">
+            <h3>Thank You!</h3>
+            <p>Your custom order has been submitted. We'll contact you soon!</p>
+            <button onclick="closeModal('confirmation-modal')" aria-label="Close Confirmation Modal">Close</button>
+        </div>
+    </div>
+    <div class="modal" id="checkout-modal">
+        <div class="modal-content">
+            <h3>Checkout</h3>
+            <p>Items: <span id="checkout-items">0</span> | Total: $<span id="checkout-total">0.00</span></p>
+            <form id="checkout-form" onsubmit="handleCheckout(event)" class="checkout-form">
+                <input type="text" id="checkout-name" placeholder="Your Name" required aria-label="Your Name for Checkout">
+                <input type="email" id="checkout-email" placeholder="Your Email" required aria-label="Your Email for Checkout">
+                <input type="text" id="checkout-address" placeholder="Shipping Address" required aria-label="Your Shipping Address">
+                <button type="submit" aria-label="Confirm Order">Confirm Order</button>
+                <button type="button" onclick="closeModal('checkout-modal')" aria-label="Close Checkout Modal">Cancel</button>
+            </form>
+        </div>
+    </div>
+    <div class="modal" id="order-confirmation-modal">
+        <div class="modal-content">
+            <h3>Order Confirmed!</h3>
+            <p>Please send your order details to Mariam via WhatsApp.</p>
+            <a id="whatsapp-link" href="#" target="_blank" aria-label="Send Order Details to WhatsApp">Send to WhatsApp</a>
+            <button onclick="closeModal('order-confirmation-modal')" aria-label="Close Order Confirmation Modal">Close</button>
+        </div>
+    </div>
+    <div class="modal" id="restock-modal">
+        <div class="modal-content">
+            <h3>Restock Notification</h3>
+            <p>You'll be notified when <span id="restock-product"></span> is back in stock!</p>
+            <button onclick="closeModal('restock-modal')" aria-label="Close Restock Notification Modal">Close</button>
+        </div>
+    </div>
+    <script>
+        let cart = { items: [], total: 0 };
+
+        function addToCart(name, price) {
+            cart.items.push({ name, price });
+            cart.total += price;
+            updateCart();
+        }
+
+        function updateCart() {
+            document.getElementById('cart-count').textContent = cart.items.length;
+            document.getElementById('cart-total').textContent = cart.total.toFixed(2);
+            document.getElementById('checkout-items').textContent = cart.items.length;
+            document.getElementById('checkout-total').textContent = cart.total.toFixed(2);
+        }
+
+        function showCheckoutModal() {
+            if (cart.items.length === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
+            document.getElementById('checkout-modal').style.display = 'flex';
+        }
+
+        function handleCheckout(event) {
+            event.preventDefault();
+            const name = document.getElementById('checkout-name').value.trim();
+            const email = document.getElementById('checkout-email').value.trim();
+            const address = document.getElementById('checkout-address').value.trim();
+
+            if (!name || !email || !address) {
+                alert('Please fill in all fields.');
+                return;
+            }
+
+            // Prepare order details for WhatsApp
+            const itemsList = cart.items.map(item => `${item.name}: $${item.price.toFixed(2)}`).join('%0A');
+            const whatsappMessage = `New order:%0AName: ${encodeURIComponent(name)}%0AEmail: ${encodeURIComponent(email)}%0AAddress: ${encodeURIComponent(address)}%0AItems: %0A${itemsList}%0ATotal: $${cart.total.toFixed(2)}`;
+            const whatsappLink = `https://wa.me/919967076030?text=${whatsappMessage}`;
+            
+            // Set the WhatsApp link in the confirmation modal
+            document.getElementById('whatsapp-link').href = whatsappLink;
+
+            // Reset cart and form
+            cart.items = [];
+            cart.total = 0;
+            updateCart();
+            document.getElementById('checkout-form').reset();
+            closeModal('checkout-modal');
+
+            // Show order confirmation modal
+            document.getElementById('order-confirmation-modal').style.display = 'flex';
+        }
+
+        function handleCustomOrder(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            if (!name || !email) {
+                alert('Please fill in your name and email.');
+                return;
+            }
+            document.getElementById('custom-order-form').reset();
+            document.getElementById('confirmation-modal').style.display = 'flex';
+        }
+
+        function toggleRestockForm(id) {
+            document.getElementById('restock-' + id).classList.toggle('active');
+        }
+
+        function submitRestock(product) {
+            const email = document.querySelector('#restock-' + product.toLowerCase().replace(' ', '-') + ' input').value.trim();
+            if (!email) {
+                alert('Please enter your email.');
+                return;
+            }
+            document.getElementById('restock-product').textContent = product;
+            document.getElementById('restock-modal').style.display = 'flex';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+    </script>
 </body>
 </html>
